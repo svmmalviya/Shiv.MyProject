@@ -1,0 +1,24 @@
+﻿@model Shiv.MyProject.Web.Host.Controllers.MyCountry
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row m-auto mt-lg-3 w-75 ">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 border-2 table-bordered p-2">
+        <form asp-action="Edit" asp-controller="Country" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group p-0 ">
+                <input type="text" data-val="true"
+                       data-val-required="invlid country."
+                       asp-for="CountryName" class="form-control" placeholder="eg. India">
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <button type="submit" class="btn btn-outline-primary float-right">Update</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>

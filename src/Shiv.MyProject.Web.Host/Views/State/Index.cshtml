@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Shiv.MyProject.Web.Host.Controllers.MyStates>
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="row m-auto w-100 ">
+    <div class="col pt-2 pb-2 ">
+        <a class="btn btn-outline-primary float-right" asp-action="Create" asp-controller="State">
+            +
+        </a>
+    </div>
+</div>
+
+<div class="row m-auto mt-lg-3 w-100 border-2 table-bordered">
+    <div class="col-4 mt-1 p-1 bg-dark text-white text-center text-uppercase">
+        State
+    </div>
+    @*<div class="col-md-4 ">@ViewBag.countries </div>            *@
+    <div class="col-4 p-1 mt-1 bg-dark text-white text-center text-uppercase">
+        Country
+    </div>
+    <div class="col-4 p-1 mt-1 bg-dark text-white text-center text-uppercase">
+        Actions
+    </div>
+    <div class="w-100"></div>
+    @if (@Model.Count() == 0)
+    {
+        <div class="col d-flex mt-1">
+            <p class="text-center w-100 text-uppercase"> No reord found. <p />
+        </div>
+    }
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="modal fade " id="@item.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Confirm</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w-100 d-flex"> Do you want to delete the state:&nbsp;<p class="font-weight-bold"> @item.StateName</p> ?</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary  float-right" data-dismiss="modal">Close</button>
+                        <a asp-action="Delete" class="btn btn-outline-danger float-right" asp-route-id="@item.id" asp-controller="State" data-id="@item.id">Yes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mt-1 text-center text-uppercase">
+            @item.StateName
+        </div>
+       <div class="col-4 mt-1 text-center text-uppercase">
+            @item.Country
+        </div>
+        @*<div class="col-md-4 ">@ViewBag.countries </div>            *@
+        <div class="col-4 mt-1 text-center text-uppercase">
+            <button class="btn btn-sm col-md-5 btn-outline-warning" data-toggle="modal" data-target="#@item.id">Delete</button>
+            <a asp-action="Edit" class="btn col-md-5 btn-outline-success btn-sm mt-0 " asp-route-id="@item.id" asp-controller="State" data-id="@item.id">Edit</a>
+        </div>
+        <div class="w-100"></div>
+    }
+</div>
