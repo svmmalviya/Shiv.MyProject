@@ -22,6 +22,7 @@ using Newtonsoft.Json.Serialization;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Shiv.MyProject.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Shiv.MyProject.Web.Host.Startup
 {
@@ -38,6 +39,7 @@ namespace Shiv.MyProject.Web.Host.Startup
         {
             _hostingEnvironment = env;
             _appConfiguration = env.GetAppConfiguration();
+            
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -89,9 +91,11 @@ namespace Shiv.MyProject.Web.Host.Startup
                     )
                 )
             );
+
+            
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, MyProjectDbContext myProjectDbContext )
         {
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
@@ -104,7 +108,7 @@ namespace Shiv.MyProject.Web.Host.Startup
             app.UseAuthentication();
 
             app.UseAbpRequestLocalization();
-
+            
 
             app.UseEndpoints(endpoints =>
             {
@@ -126,6 +130,7 @@ namespace Shiv.MyProject.Web.Host.Startup
                     .GetManifestResourceStream("Shiv.MyProject.Web.Host.wwwroot.swagger.ui.index.html");
                 options.DisplayRequestDuration(); // Controls the display of the request duration (in milliseconds) for "Try it out" requests.  
             }); // URL: /swagger
+
         }
         
         private void ConfigureSwagger(IServiceCollection services)

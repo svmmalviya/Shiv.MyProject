@@ -31,7 +31,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             return View(list);
         }
 
-        // GET: CountryController/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -45,7 +44,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             return View();
         }
 
-        // POST: CountryController/Create
         [HttpPost]
         [IgnoreAntiforgeryToken]
         public IActionResult Create([FromForm] MyCountry country)
@@ -65,7 +63,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
 
         }
 
-        // GET: CountryController/Edit/5
         public IActionResult Edit(int id)
         {
             return View(myProjectDbContext.Mycountries.Select(x => new MyCountry
@@ -75,7 +72,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             }).Where(x => x.id == id).FirstOrDefault());
         }
 
-        // POST: CountryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(MyCountry country)
@@ -98,7 +94,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             }
         }
 
-        // GET: CountryController/Delete/5
         public ActionResult Delete(int id)
         {
 
@@ -117,7 +112,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             }
         }
 
-        // POST: CountryController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

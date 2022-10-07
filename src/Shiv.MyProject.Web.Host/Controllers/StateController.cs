@@ -28,7 +28,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             ViewBag.countries=countries;
         }
 
-        // GET: CountryController
         public IActionResult Index()
         {
             var list = myProjectDbContext.Mystates.Select(x => new MyStates
@@ -48,7 +47,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             return View();
         }
 
-        // GET: CountryController/Create
         [HttpGet]
         public IActionResult Create()
         {
@@ -56,7 +54,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             return View();
         }
 
-        // POST: CountryController/Create
         [HttpPost]
         [IgnoreAntiforgeryToken]
         public IActionResult Create([FromForm] MyStates states)
@@ -83,7 +80,6 @@ namespace Shiv.MyProject.Web.Host.Controllers
             }
         }
 
-        // GET: CountryController/Edit/5
         public IActionResult Edit(int id)
         {
             ViewBag.countries = countries;
@@ -131,23 +127,11 @@ namespace Shiv.MyProject.Web.Host.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //// POST: CountryController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 
-
+    /// <summary>
+    /// model state class 
+    /// </summary>
     public class MyStates
     {
         [Required(ErrorMessage = "State can not be empty.")]
