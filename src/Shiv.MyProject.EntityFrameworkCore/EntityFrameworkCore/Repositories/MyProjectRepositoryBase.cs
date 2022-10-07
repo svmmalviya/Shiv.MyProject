@@ -16,6 +16,7 @@ namespace Shiv.MyProject.EntityFrameworkCore.Repositories
         protected MyProjectRepositoryBase(IDbContextProvider<MyProjectDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
+            
         }
 
         // Add your common methods for all repositories

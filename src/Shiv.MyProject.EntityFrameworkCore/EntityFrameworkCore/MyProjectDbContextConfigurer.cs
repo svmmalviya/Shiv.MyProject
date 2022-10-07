@@ -1,5 +1,6 @@
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Shiv.MyProject.EntityFrameworkCore
 {
@@ -7,7 +8,7 @@ namespace Shiv.MyProject.EntityFrameworkCore
     {
         public static void Configure(DbContextOptionsBuilder<MyProjectDbContext> builder, string connectionString)
         {
-            builder.UseSqlServer(connectionString);
+            builder.UseSqlServer(connectionString);            
         }
 
         public static void Configure(DbContextOptionsBuilder<MyProjectDbContext> builder, DbConnection connection)
